@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import './buttonTimer.css';
 
-
+// time2 -> time, setTime1 -> setTime
 function ButtonTimer ({time2 , setTime1}) {
 
   const [inter, setInter] = useState();
   const [status , setStatus] = useState(0);
 
+  // const {ms as microSecondes, s as secondes} = time2
   var updatedMs = time2.ms , updatedS = time2.s , updatedM = time2.m , updatedH = time2.h ;
 
   const start = () => {
@@ -15,6 +16,7 @@ function ButtonTimer ({time2 , setTime1}) {
     setStatus(1);
   }
 
+  // Refactoring this function
   const run = () => {
     if(updatedM === 60){
       updatedM = 0;
@@ -53,6 +55,7 @@ function ButtonTimer ({time2 , setTime1}) {
 
   return (
       <div className='continer-buttonTimer'>
+        {/* use switch case method for refactoring this */}
           {status === 0 && <button className='buttun-start-buttonTimer' onClick={start} >start</button>}
           {status === 1 && 
               <div>

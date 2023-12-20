@@ -5,7 +5,9 @@ function DisplayTimer({time1}) {
 
   const { ms , s , m , h} = time1;  //  ???????
   return(
+    // continer-displayTimer -> dt-container
       <div className='continer-displayTimer'>
+        {/* use tag name. example dt-continer span */}
           <span className='span-1'>
           {h >= 10 ? h : "0" + h} 
           </span >
