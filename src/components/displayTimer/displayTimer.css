@@ -1,5 +1,5 @@
 
-.continer-displayTimer {
+.dt-continer{
     height: 75%;
     /* background-color: chartreuse; */
     /* border: 1px solid black; */
@@ -10,7 +10,7 @@
 
 }
 
-.span-1 {
+.dt-continer-span {
     padding: 15px;
     margin-left: 10px;
     /* background-color: white; */

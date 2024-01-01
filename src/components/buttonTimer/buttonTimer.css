@@ -1,20 +1,26 @@
-.continer-buttonTimer {
+.bt-continer {
     height: 15%;
-    /* background-color: rgb(13, 106, 101); */
-    display: flex;
-    justify-content: space-between;
 }
 
-.buttun-start-buttonTimer {
+.bt-start-buttun {
+    background-color: white;
+    border-radius: 50%;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+}
+
+.bt-buttun{
     background-color: white;
     border-radius: 50%;
     padding: 20px;
     margin: 10px;
 }
 
-.buttun-buttonTimer {
-    background-color: white;
+.bt-stop-buttun {
+    background-color: red;
     border-radius: 50%;
     padding: 20px;
     margin: 10px;
+    text-align: center;
 }

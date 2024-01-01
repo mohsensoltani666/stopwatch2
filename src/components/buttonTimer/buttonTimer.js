@@ -1,74 +1,88 @@
+
 import { useState } from 'react';
 import './buttonTimer.css';
 
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
-function ButtonTimer ({time2 , setTime1}) {
 
-  const [inter, setInter] = useState();
-  const [status , setStatus] = useState(0);
+function ButtonTimer ({time , setTime}) {
 
-  var updatedMs = time2.ms , updatedS = time2.s , updatedM = time2.m , updatedH = time2.h ;
+  const [inter , setInter] = useState();
+  const [game, setGame] = useState('start')
+
+  let microSecondes = time.ms , seconds = time.s , minute = time.m , hour = time.h
+  // var updatedMs = time.ms , updatedS = time.s , updatedM = time.m , updatedH = time.h ;
+
 
   const start = () => {
     run();
     setInter(setInterval(run , 10));
-    setStatus(1);
+    setGame('playing')
   }
 
   const run = () => {
-    if(updatedM === 60){
-      updatedM = 0;
-      updatedH++;
+    if(minute === 60){
+      minute = 0;
+      hour++;
     }
-    if(updatedS === 60){
-      updatedS = 0;
-      updatedM++;
+    if(seconds === 60){
+      seconds = 0;
+      minute++;
     }
-    if(updatedMs === 99){
-      updatedS++;
-      updatedMs = 0;
+    if(microSecondes === 99){
+      seconds++;
+      microSecondes = 0;
     }
-    updatedMs++;
+    microSecondes++;
 
-    return setTime1({ms:updatedMs , s:updatedS , m:updatedM , h:updatedH })
+    return setTime({ms:microSecondes ,s:seconds ,m:minute ,h:hour })
   }
 
   const save = () => {
     // list.push(time2)
     // setList(list) 
     // setList([...list , time2 ])
-    setStatus(1)
   }
 
   const stop = () => {
     clearInterval(inter);
-    setTime1({ms:0, s:0 , m:0 , h:0 });
-    setStatus(0);
+    setTime({ms:0, s:0 , m:0 , h:0 });
+    setGame('start')
   }
 
   const pause = () => {
     clearInterval(inter);
-    setStatus(3);
   }
 
   return (
-      <div className='continer-buttonTimer'>
-          {status === 0 && <button className='buttun-start-buttonTimer' onClick={start} >start</button>}
-          {status === 1 && 
+    <div className="bt-continer">
+      {(() => {
+        switch (game) {
+          case 'start':
+            return (
+              <button className='bt-start-buttun' onClick={start} >
+                {/* <FontAwesomeIcon icon={faEnvelope} /> */}
+              </button>)
+          case 'playing':
+            return (
               <div>
-                  <button className='buttun-buttonTimer' onClick={save} >save</button>&nbsp;
-                  <button className='buttun-buttonTimer' onClick={stop} >stop</button>
-                  <button className='buttun-buttonTimer' onClick={pause} >pause</button>
-              </div>    
-          }
-          {status === 3 && 
-              <div>
-                  <button className='buttun-buttonTimer' onClick={save} >save</button>&nbsp;
-                  <button className='buttun-buttonTimer' onClick={stop} >stop</button>
-                  <button className='buttun-buttonTimer' onClick={start} >start</button>
-              </div>    
-          }    
-      </div>
+                <button className='bt-buttun' onClick={save} >
+                  {/* <FontAwesomeIcon icon={faEnvelope} /> */}
+                </button>
+                <button className='bt-stop-buttun' onClick={stop} >
+                  {/* <FontAwesomeIcon icon={faEnvelope} /> */}
+                </button>
+                <button className='bt-buttun' onClick={pause} >
+                  {/* <FontAwesomeIcon icon={faEnvelope} /> */}
+                </button>
+              </div>  
+            )
+          default:
+            return null
+        }
+      })()}
+    </div>
   )
 } 
 
