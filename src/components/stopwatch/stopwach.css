@@ -1,6 +1,6 @@
-.continer-stopwatch {
+.sw-continer {
     /* background-color: red; */
-    background-color: gray;
+    background-color: rgb(238, 234, 234);
     /* border: 1px solid white; */
     width: 20%;
     height: 80%;
@@ -9,7 +9,7 @@
     margin-top: 50px;
 }
 
-.h1-stopwatch {
+.sw-title {
     height: 25%;
     margin: 0px  auto;
     padding: 5px;
@@ -19,7 +19,7 @@
 }
 
 
-.top {
+.header{
     height: 20%;
     /* background-color: fuchsia; */
     display: flex;
