@@ -1,25 +1,27 @@
+import React from 'react';
 
-import React, { useState } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
+import TourIcon from '@mui/icons-material/Tour';
 
 import './displaysave.css';
 
-function Save ({display , id}) {
+function Save ({list , setList}) {
 
-    const [ list , setList ] = useState([id])
-
-    function clickHandler () {
-        list.push(display)
-        setList(list) 
-        setList([...list , display ])
+    const removeHandler = (id) => {
+        setList(list.filter( item => item.id !== id))
     }
 
     return (
-        <div className='continer-save'>
-            <button onClick={clickHandler}>click</button>
-            {
-                
-                list.map((item , index ) => <p key={1} >{item}</p> )
-            }
+        <div className='s-continer'>
+            {list.map((item , index ) => (
+                <p key={index} className='s-p-row'  >
+                    <DeleteIcon fontSize="smal" color="white"  onClick={() => removeHandler(item.id)} />
+                    <div >
+                        id {item.id} - {item.h} : {item.m} : {item.s} : {item.ms}
+                        <TourIcon color="action"/>
+                    </div>
+                </p>)
+            )}
         </div>
     )
 }

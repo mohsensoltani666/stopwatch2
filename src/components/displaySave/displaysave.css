@@ -1,7 +1,14 @@
 
-.continer-save {
+.s-continer {
     height: 65%;
     /* background-color: yellow; */
     color: black;
+    overflow: auto;
+}
 
+.s-p-row {
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

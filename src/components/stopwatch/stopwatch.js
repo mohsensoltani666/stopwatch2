@@ -1,11 +1,15 @@
-import { useState } from "react";
+import React , { useState }from 'react';
+
 import ButtonTimer from "../buttonTimer/buttonTimer";
 import DisplayTimer from "../displayTimer/displayTimer";
-import "./stopwach.css";
 import Save from "../displaySave/displaSave";
 
+import "./stopwach.css";
+
 function StopWatch() {
-  const [time, setTime] = useState({ ms:0 , s:0 , m:0 , h:0 });
+
+  const [time , setTime] = useState({ ms:0 , s:0 , m:0 , h:0 });
+  const [list , setList] = useState([])
 
   return (
     <div className="sw-continer">
@@ -13,8 +17,8 @@ function StopWatch() {
         <h1 className="sw-title">stopwatch</h1>
         <DisplayTimer time={time} />
       </div>
-      <Save display={setTime} />
-      <ButtonTimer time={time} setTime={setTime} />
+      <Save  list={list} setList={setList} />
+      <ButtonTimer time={time} setTime={setTime} list={list} setList={setList}/>
     </div>
   );
 }

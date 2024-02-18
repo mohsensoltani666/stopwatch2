@@ -1,3 +1,4 @@
+import React from 'react';
 
 import './displayTimer.css';
 
@@ -26,12 +27,3 @@ function DisplayTimer({time}) {
 }
 
 export default DisplayTimer;
-
-
-
-// const showtime = new Date().toLocaleTimeString()
-// return (
-//   <div className="continer-displayTimer">
-//     <h1 className='h1-displayTimer'>{showtime}</h1>
-//   </div>
-// );
